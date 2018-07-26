@@ -1,13 +1,14 @@
 const HDWalletProvider = require('truffle-hdwallet-provider')
 const Web3 = require('web3')
 const { interface, bytecode } = require('./compile')
+const config = require('./config')
 
 const chalk = require('chalk') //color outputs
 const log = console.log
 
 const provider = new HDWalletProvider(
-  'zoo dizzy pass like grape silly summer best glimpse ketchup wage nation',
-  'https://rinkeby.infura.io/v3/2ac0eda37fdc4c808f1c164ded3ff14c'
+  config.mnemonic,
+  config.networkUrl
 )
 
 const web3 = new Web3(provider)
