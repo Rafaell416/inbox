@@ -4,6 +4,7 @@ const Web3 = require('web3')
 const provider = ganache.provider()
 const web3 = new Web3(provider)
 const { interface, bytecode } = require('../compile')
+const ora = require('ora')
 
 let accounts
 let inbox
@@ -24,8 +25,15 @@ describe('Inbox', () => {
   it('Deploys a contract', () => {
     assert.ok(inbox.options.address)
   })
-  it('has a default message', async () => {
+
+  it('Has a default message', async () => {
     const message = await inbox.methods.message().call()
     assert.equal(message, 'Hello cosmos')
-  });
+  })
+
+  it('Updates message', async () => {
+    await inbox.methods.setMessage('Updated message dude').send({ from: accounts[0] })
+    const message = await inbox.methods.message().call()
+    assert.equal(message, 'Updated message dude')
+  })
 })
