@@ -4,7 +4,6 @@ const Web3 = require('web3')
 const provider = ganache.provider()
 const web3 = new Web3(provider)
 const { interface, bytecode } = require('../compile')
-const ora = require('ora')
 
 let accounts
 let inbox

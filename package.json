@@ -7,15 +7,17 @@
   "license": "MIT",
   "scripts": {
     "push": "git push -u origin development",
-    "test": "mocha"
+    "test": "mocha",
+    "deploy": "node deploy.js"
   },
   "dependencies": {
+    "chalk": "^2.4.1",
     "ganache-cli": "^6.1.6",
     "mocha": "^5.2.0",
+    "ora": "^3.0.0",
     "solc": "^0.4.24",
+    "truffle-hdwallet-provider": "^0.0.5",
     "web3": "1.0.0-beta.26"
   },
-  "devDependencies": {
-    "ora": "^3.0.0"
-  }
+  "devDependencies": {}
 }
