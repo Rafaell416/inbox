@@ -4,7 +4,6 @@ const { interface, bytecode } = require('./compile')
 
 const chalk = require('chalk') //color outputs
 const log = console.log
-const ora = require('ora') //spinner
 
 const provider = new HDWalletProvider(
   'zoo dizzy pass like grape silly summer best glimpse ketchup wage nation',
@@ -15,8 +14,6 @@ const web3 = new Web3(provider)
 
 const deploy = async () => {
   try {
-    ora().start()
-
     const accounts = await web3.eth.getAccounts()
     log(chalk.blue('Attempting to deploy from account', accounts[0]))
 
@@ -25,10 +22,8 @@ const deploy = async () => {
       .send({ gas: '1000000', from: accounts[0] })
 
     log(chalk.green('Contract deployed to', result.options.address))
-    ora().succeed()
   } catch (e) {
     log(chalk.red('There was an error deploying the contract ==>', e))
-    ora().fail()
     process.exit(1)
   }
 }
